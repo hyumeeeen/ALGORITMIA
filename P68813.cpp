@@ -18,8 +18,15 @@ ll f(int i, int j) {
     if ( i < 6 ) return M[i][j] = j;
 
     ll res = 0;
+    //hay que tener en cuenta que antes habia puesto:
+    /*
     for ( int p = 1; p <= n - 2; ++p ) {
         res += f(p, j) * f(n - 5 - p, j);
+    }
+    habia puesto n en vez de i, entonces la recursion iba siempre con la misma cosa, y tenia un bucle infinito
+    */
+    for ( int p = 1; p <= i - 2; ++p ) {
+        res += f(p, j) * f(i - 5 - p, j);
     }
 
     return M[i][j] = res;
